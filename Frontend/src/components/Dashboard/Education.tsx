@@ -2,8 +2,9 @@ import FormatDate from "../../utils/FormatDate";
 import axios from "../../api/axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import type { Education } from "../Types/types";
 
-const Education = ({ education }) => {
+const EducationItem = ({ education }: { education: Education[] }) => {
   const token = localStorage.getItem("token");
   const queryClient = useQueryClient();
 
@@ -43,7 +44,7 @@ const Education = ({ education }) => {
           </tr>
         </thead>
         <tbody>
-          {education.map((edu) => (
+          {education.map((edu: Education) => (
             <tr key={edu._id}>
               <td>{edu?.institute}</td>
               <td className="hide-sm">{edu?.degree}</td>
@@ -67,4 +68,4 @@ const Education = ({ education }) => {
   );
 };
 
-export default Education;
+export default EducationItem;

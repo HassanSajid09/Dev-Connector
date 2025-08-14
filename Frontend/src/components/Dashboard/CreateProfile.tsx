@@ -92,12 +92,11 @@ const CreateProfile = () => {
     socials: cleanedSocials,
   };
 
-  const payload = {
-    ...body,
-    skills: body?.skills?.split(",").map((skill) => skill.trim()) || [],
-  };
-
   const postProfile = async (body: profileForm) => {
+    const payload = {
+      ...body,
+      skills: body?.skills?.split(",").map((skill) => skill.trim()) || [],
+    };
     const res = await axios.post("/profile", payload, {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -2,8 +2,9 @@ import FormatDate from "../../utils/FormatDate";
 import axios from "../../api/axios";
 import toast from "react-hot-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import type { Experience } from "../Types/types";
 
-const Experience = ({ experience }) => {
+const ExperienceItem = ({ experience }: { experience: Experience[] }) => {
   const token = localStorage.getItem("token");
   const queryClient = useQueryClient();
 
@@ -67,4 +68,4 @@ const Experience = ({ experience }) => {
   );
 };
 
-export default Experience;
+export default ExperienceItem;
