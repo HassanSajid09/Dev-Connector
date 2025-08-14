@@ -1,4 +1,12 @@
-const Profileabout = ({ profile }) => {
+interface Profile {
+  user: {
+    name: string;
+  };
+  bio: string;
+  skills: string[];
+}
+
+const Profileabout = ({ profile }: { profile: Profile }) => {
   return (
     <>
       <div className="profile-about bg-light p-2">
@@ -9,7 +17,7 @@ const Profileabout = ({ profile }) => {
         <div className="line"></div>
         <h2 className="text-primary">Skill Set</h2>
         <div className="skills">
-          {profile?.skills.slice(0, 4).map((skill, index) => (
+          {profile?.skills.slice(0, 4).map((skill: string, index: number) => (
             <>
               <div key={index} className="p-1">
                 <i className="fa fa-check"></i> {skill}

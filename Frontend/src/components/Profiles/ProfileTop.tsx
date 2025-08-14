@@ -1,6 +1,7 @@
-import React from "react";
+import type { profileItem } from "../Types/types";
 
-const ProfileTop = ({ profile }) => {
+
+const ProfileTop = ({ profile }:{profile:profileItem}) => {
   return (
     <>
       <div className="profile-top bg-primary p-2">

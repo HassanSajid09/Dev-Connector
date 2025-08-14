@@ -6,6 +6,7 @@ import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileGitHub from "./ProfileGitHub";
 import { useCustom } from "../Hooks/useCustom";
+import type { Education, Experience } from "../Types/types";
 
 const UserProfile = () => {
   const { profile, isMyProfile, isPending } = useCustom();
@@ -29,7 +30,7 @@ const UserProfile = () => {
           <Profileabout profile={profile} key={profile?._id} />
           {profile?.experience.length > 0 ? (
             <>
-              {profile?.experience.map((experience) => (
+              {profile?.experience.map((experience:Experience) => (
                 <ProfileExperience
                   key={experience._id}
                   experience={experience}
@@ -41,7 +42,7 @@ const UserProfile = () => {
           )}
           {profile?.education.length > 0 ? (
             <>
-              {profile?.education.map((education) => (
+              {profile?.education.map((education:Education) => (
                 <ProfileEducation key={education._id} education={education} />
               ))}
             </>

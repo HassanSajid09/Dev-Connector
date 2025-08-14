@@ -5,6 +5,15 @@ import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
 import { useState } from "react";
 
+interface Comment {
+  _id: string;
+  text: string;
+  name: string;
+  avatar: string;
+  user: string;
+  date: Date; // or Date if you handle it as a Date object
+}
+
 const SinglePost = () => {
   const [, setActions] = useState<boolean>(false);
   const { singlePost } = useCustom();
@@ -17,7 +26,7 @@ const SinglePost = () => {
         <PostItem post={singlePost} Actions={false} setActions={setActions} />
         <CommentForm postId={singlePost?._id} />
         <div className="comments">
-          {singlePost?.comments.map((comment) => (
+          {singlePost?.comments.map((comment: Comment) => (
             <CommentItem
               key={comment._id}
               comment={comment}

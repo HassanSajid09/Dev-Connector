@@ -1,8 +1,6 @@
 import { useCustom } from "../Hooks/useCustom";
 import { NavLink } from "react-router-dom";
 import FormatDate from "../../utils/FormatDate";
-import { useEffect } from "react";
-import { useQueryClient } from "@tanstack/react-query";
 
 type Like = {
   _id: string;
@@ -15,7 +13,7 @@ type Post = {
   text: string;
   name: string;
   avatar: string;
-  comments: any[];
+  comments: [];
   likes: Like[];
   date: Date;
 };
@@ -23,18 +21,11 @@ type Post = {
 type PostItemProps = {
   post?: Post;
   Actions?: boolean;
-  setActions?: any;
+  setActions?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const PostItem: React.FC<PostItemProps> = ({ post, Actions, setActions }) => {
   const { Like, delLike, delPost, authUser } = useCustom();
-  const queryClient = useQueryClient();
-
-  // useEffect(() => {
-  //   if (!authUser && !localStorage.getItem("token")) {
-  //     queryClient.clear();
-  //   }
-  // }, [authUser, queryClient]);
 
   if (!post || !post._id) {
     console.log("Post not ready yet");
@@ -98,7 +89,9 @@ const PostItem: React.FC<PostItemProps> = ({ post, Actions, setActions }) => {
               <NavLink
                 to={`/posts/${_id}`}
                 className={"btn btn-primary"}
-                onClick={() => setActions(!Actions)}
+                onClick={() => {
+                  if (setActions) setActions(true);
+                }}
               >
                 Discussion
                 {comments.length > 0 && (

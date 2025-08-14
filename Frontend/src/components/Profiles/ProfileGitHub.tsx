@@ -1,7 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "../../api/axios";
 
-const ProfileGitHub = ({ username }) => {
+type Repo = {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string | null;
+  stargazers_count: number;
+  watchers_count: number;
+  forks_count: number;
+};
+
+const ProfileGitHub = ({ username }: { username: string }) => {
   const getGithubRepos = async () => {
     const res = await axios.get(`/profile/github/${username}`);
     return res.data;
@@ -15,7 +25,7 @@ const ProfileGitHub = ({ username }) => {
     <>
       <div className="profile-github">
         <h2 className="text-primary my-1">GitHub Repos</h2>
-        {repos?.map((repo) => (
+        {repos?.map((repo: Repo) => (
           <div key={repo.id} className="repo bg-white p-1 my-1">
             <div>
               <h4>

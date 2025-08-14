@@ -3,11 +3,22 @@ import { useCustom } from "../Hooks/useCustom";
 import PostForm from "./PostForm";
 import PostItem from "./PostItem";
 import NavBar from "../Layout/NavBar";
-import { useQueryClient } from "@tanstack/react-query";
+
+type Dev = {
+  _id: string;
+  text: string;
+  name: string;
+  avatar: string;
+  user: string | { _id: string };
+  date: Date;
+  comments: [],
+  likes:[],
+};
 
 const Posts = () => {
   const [actions, setActions] = useState<boolean>(true);
-  const { Posts, isPending } = useCustom();
+const [Postss, ] = useState<Dev[]>([]);
+  const { isPending } = useCustom();
   useEffect(() => {
     const shouldReload = localStorage.getItem("reloadPostsPageOnce");
 
@@ -28,7 +39,7 @@ const Posts = () => {
         </p>
         <PostForm />
         <div className="posts">
-          {Posts?.map((post) => (
+          {Postss?.map((post) => (
             <PostItem
               key={post._id}
               post={post}

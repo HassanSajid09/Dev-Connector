@@ -1,26 +1,30 @@
 import { NavLink } from "react-router-dom";
+import type { profileItem } from "../Types/types";
 
-const ProfileItem = ({
-  profile: { status, company, location, skills, user },
-}) => {
+const ProfileItem = ({ profile }: { profile: profileItem }) => {
   return (
     <>
       <div className="profiles">
         <div className="profile bg-light">
-          <img src={user?.avatar} alt="" className="round-img" />
+          <img src={profile.user?.avatar} alt="" className="round-img" />
           <div>
-            <h2>{user?.name}</h2>
+            <h2>{profile.user?.name}</h2>
             <p>
-              {status} {company && <span>at {company}</span>}
+              {status} {profile.company && <span>at {profile.company}</span>}
             </p>
-            <p className="my-1">{location && <span>{location}</span>}</p>
-            <NavLink to={`/profile/${user._id}`} className="btn btn-primary">
+            <p className="my-1">
+              {location && <span>{profile.location}</span>}
+            </p>
+            <NavLink
+              to={`/profile/${profile.user._id}`}
+              className="btn btn-primary"
+            >
               {" "}
               View Profile
             </NavLink>
           </div>
           <ul>
-            {skills.slice(0, 4).map((skill, index) => (
+            {profile.skills.slice(0, 4).map((skill, index) => (
               <>
                 <li className="text-primary" key={index}>
                   <i className="fa fa-check"></i> {skill}

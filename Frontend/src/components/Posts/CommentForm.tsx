@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCustom } from "../Hooks/useCustom";
 
-const CommentForm = ({ postId }) => {
+const CommentForm = ({ postId }: { postId: string }) => {
   const [text, setText] = useState<string>("");
   const { Comment } = useCustom();
   return (

@@ -1,27 +1,30 @@
-import { useEffect } from "react";
 import FormatDate from "../../utils/FormatDate";
 import { useCustom } from "../Hooks/useCustom";
 import { NavLink } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
+
+interface Comment {
+  _id: string;
+  text: string;
+  name: string;
+  avatar: string;
+  user: string;
+  date: Date; // or Date if you handle it as a Date object
+}
+interface CommentItemProps {
+  postId: string;
+  comment: Comment;
+}
 
 const CommentItem = ({
   postId,
   comment: { _id, text, name, avatar, user, date },
-}) => {
+}: CommentItemProps) => {
   const { authUser, removeComment } = useCustom();
-
-  // const queryClient = useQueryClient();
-
-  // useEffect(() => {
-  //   if (!authUser && !localStorage.getItem("token")) {
-  //     queryClient.clear();
-  //   }
-  // }, [authUser, queryClient]);
 
   const isMyPost =
     !!authUser?.user &&
     String(authUser.user._id) ===
-      String(typeof user === "object" ? user._id : user);
+      String(typeof user === "object" ? (user as { _id: string })._id : user);
 
   return (
     <>

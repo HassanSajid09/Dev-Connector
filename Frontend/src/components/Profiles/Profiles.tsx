@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "../../api/axios";
 import ProfileItem from "./ProfileItem";
 import NavBar from "../Layout/NavBar";
+import type { profileItem } from "../Types/types";
 
 const Profiles = () => {
   const getAllProfiles = async () => {
@@ -30,7 +31,7 @@ const Profiles = () => {
             <div className="profiles">
               {profiles.length > 0 ? (
                 <>
-                  {profiles.map((profile) => (
+                  {profiles.map((profile:profileItem) => (
                     <ProfileItem key={profile._id} profile={profile} />
                   ))}
                 </>
