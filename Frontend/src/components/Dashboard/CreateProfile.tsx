@@ -67,9 +67,38 @@ const CreateProfile = () => {
       setFormData(profile);
     }
   }, [profile]);
+  const {
+    company,
+    website,
+    location,
+    bio,
+    status,
+    githubusername,
+    skills,
+    socials,
+  } = formData;
+  const cleanedSocials = Object.fromEntries(
+    Object.entries(socials || {}).filter(([, v]) => v?.trim() !== "")
+  );
+
+  const body: profileForm = {
+    company,
+    website,
+    location,
+    bio,
+    status,
+    githubusername,
+    skills,
+    socials: cleanedSocials,
+  };
+
+  const payload = {
+    ...body,
+    skills: body?.skills?.split(",").map((skill) => skill.trim()) || [],
+  };
 
   const postProfile = async (body: profileForm) => {
-    const res = await axios.post("/profile", body, {
+    const res = await axios.post("/profile", payload, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -125,31 +154,9 @@ const CreateProfile = () => {
     }));
   };
 
-  const {
-    company,
-    website,
-    location,
-    bio,
-    status,
-    githubusername,
-    skills,
-    socials,
-  } = formData;
-  const cleanedSocials = Object.fromEntries(
-    Object.entries(socials || {}).filter(([, v]) => v?.trim() !== "")
-  );
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body: profileForm = {
-      company,
-      website,
-      location,
-      bio,
-      status,
-      githubusername,
-      skills,
-      socials: cleanedSocials,
-    };
+
     console.log("Sending the request", body);
     mutate(body);
   };

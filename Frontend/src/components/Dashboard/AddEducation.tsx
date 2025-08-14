@@ -31,7 +31,7 @@ const AddEducation = () => {
   const addEdu = async (body: EduForm) => {
     const res = await axios.put("/profile/education", body, {
       headers: {
-        "Auth-Token": `${token}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });

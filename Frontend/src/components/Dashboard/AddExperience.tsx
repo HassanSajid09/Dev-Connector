@@ -31,7 +31,7 @@ const AddExperience = () => {
   const addExp = async (body: ExpForm) => {
     const res = await axios.put("/profile/experience", body, {
       headers: {
-        "Auth-Token": `${token}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     });
