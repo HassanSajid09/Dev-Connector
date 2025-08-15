@@ -11,7 +11,7 @@ interface Comment {
   name: string;
   avatar: string;
   user: string;
-  date: Date; // or Date if you handle it as a Date object
+  date: Date;
 }
 
 const SinglePost = () => {

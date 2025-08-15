@@ -17,8 +17,8 @@ type Dev = {
 
 const Posts = () => {
   const [actions, setActions] = useState<boolean>(true);
-const [Postss, ] = useState<Dev[]>([]);
-  const { isPending } = useCustom();
+// const [Postss, ] = useState<Dev[]>([]);
+  const {Posts, isPending } = useCustom();
   useEffect(() => {
     const shouldReload = localStorage.getItem("reloadPostsPageOnce");
 
@@ -39,7 +39,7 @@ const [Postss, ] = useState<Dev[]>([]);
         </p>
         <PostForm />
         <div className="posts">
-          {Postss?.map((post) => (
+          {Posts?.map((post:Dev) => (
             <PostItem
               key={post._id}
               post={post}
