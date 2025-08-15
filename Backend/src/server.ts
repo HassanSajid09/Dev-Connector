@@ -15,7 +15,7 @@ ConnectDb();
 
 app.use(
   cors({
-    origin: "https://dev-connnector.netlify.app/",
+    origin: "https://dev-connnector.netlify.app",
   })
 );
 app.use(express.json());
