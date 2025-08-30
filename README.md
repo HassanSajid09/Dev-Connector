@@ -91,3 +91,7 @@ cd BackEnd && npm run dev
 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome. Open a PR to suggest improvements.
+
+📄 Note
+
+This project was created for learning purposes only, not intended for production use.
