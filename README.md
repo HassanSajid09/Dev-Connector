@@ -36,7 +36,7 @@ Fully protected routes for profile and post management
 
 🛠️ Tech Stack
 
-Frontend: React, TypeScript, Context API / Redux (if used), TailwindCSS or CSS Modules
+Frontend: React, TypeScript, Context API / React Query
 
 Backend: Express.js, Node.js
 
@@ -46,7 +46,7 @@ Auth: JSON Web Tokens (JWT), bcrypt
 
 Other: REST APIs, Protected Routes
 
-📷 Demo / Screenshots
+📷 Demo
 
 <img width="1919" height="927" alt="image" src="https://github.com/user-attachments/assets/9403b68d-cdc4-484c-9ef1-32f954fa82ce" />
 <img width="1919" height="929" alt="image" src="https://github.com/user-attachments/assets/c35c1adf-7c8b-4531-b399-3431bc9de825" />
@@ -76,11 +76,11 @@ JWT_SECRET=your_secret_key
 
 Start the development servers:
 
-# Client
-cd client && npm start  
+# FrontEnd
+cd FrontEnd && npm run dev
 
-# Server
-cd server && npm run dev
+# BackEnd
+cd BackEnd && npm run dev
 
 🔮 Future Improvements
 
@@ -88,16 +88,6 @@ cd server && npm run dev
 
 🔔 Real-time notifications (WebSockets)
 
-❤️ Like system for posts & comments
-
-📱 Mobile-friendly UI improvements
-
-☁️ Deployment on Vercel (client) + Render/Heroku (backend)
-
 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome. Open a PR to suggest improvements.
-
-📄 License
-
-This project is licensed under the MIT License.
