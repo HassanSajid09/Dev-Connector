@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMutation} from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import axios from "../../api/axios";
 import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
